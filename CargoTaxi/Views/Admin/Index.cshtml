@@ -1,0 +1,42 @@
+﻿@section scripts{
+    <script src="@Url.Content("~/Scripts/SPA/Index.js")"></script>
+}
+<link href="~/Content/Client/ClientCss.css" rel="stylesheet" type="text/css" />
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Функционал Администратора</h2>
+
+<button type="button" id="createCar" class="btn btn-info" onclick="location.href='@Url.Action("CreateCar", "Car")'">Новая машина</button>
+<button type="button" id="allOrders" class="btn btn-info" onclick="location.href='@Url.Action("Orders", "Order")'">Все заказы</button>
+@*<button type="button" id="allUsers" class="admin_button" onclick="location.href='@Url.Action("AllUsers", "Admin")'">Все пользователи</button>*@
+<button type="button" id="assignCar" class="btn btn-info" onclick="location.href='@Url.Action("NotAsignOrders", "Admin")'">Назначить машину</button>
+<button type="button" id="allClients" class="btn btn-info" onclick="location.href='@Url.Action("AllClients", "Client")'">Все клиенты</button>
+<button type="button" id="allCars" class="btn btn-info" onclick="location.href='@Url.Action("AllCars", "Car")'">Все машины</button>
+
+<button type="button" id="allDrivers" class="btn btn-info" onclick="location.href='@Url.Action("GetAllDrivers", "Driver")'">Все водители</button>
+<button type="button" id="addDriver" class="btn btn-info" onclick="location.href='@Url.Action("FindEmail", "Admin")'">Зарегистрировать водителя</button>
+
+<hr/>
+<div>
+    <h4>Навигация по заказам</h4>
+    <ul>
+        <li><a href="">Поиск по номеру телефона клиента</a></li>
+        <li><a href="">Поиск по email клиента</a></li>
+        <li><a href="">Поиск по дате</a></li>
+        <li><a href="">Поиск по номеру машины</a></li>
+        <li><a href="">Заказы на сегодня</a></li>
+        <li><a href="">Необработанные заказы</a></li>
+        <li><a href="">Невыполненные заказы</a></li>
+    </ul>
+</div>
+
+@*void CreateCar(Car car);
+    void DeleteCar(int id);
+    void CreateDriver(int id);
+    void DeactivateDriver(int id);
+    void AssignCar(int orderId, int carId, string number);
+    void DeleteOrder(string number);*@

@@ -1,0 +1,87 @@
+﻿@model List<CargoTaxi.Models.DriverOrderViewModel>
+   
+@{
+    ViewBag.Title = "GetMyOrders";
+}
+<div class="partialView">
+    @Html.Action("GetPartialView", "Driver")   
+</div>
+<br/>
+<hr/>
+<p>
+<h2>@ViewBag.Message</h2>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Номер")
+        </th>
+        <th>
+            @Html.DisplayName("Дата")
+        </th>
+        <th>
+            @Html.DisplayName("Адрес отправки")
+        </th>
+        <th>
+            @Html.DisplayName("Адрес доставки")
+        </th>
+        <th>
+            @Html.DisplayName("Начальное время")
+        </th>
+        <th>
+            @Html.DisplayName("Конечное время")
+        </th>
+        <th>
+            @Html.DisplayName("Машина")
+        </th>
+        <th>
+            @Html.DisplayName("Категория")
+        </th>
+        <th>
+            @Html.DisplayName("Статус заказа")
+        </th>
+        <th>
+            @Html.DisplayName("Телефон клиента")
+        </th>       
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartAdress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FinishAdress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FinishTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Car)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarCategory)
+            </td>
+            <td>                
+                @Html.DisplayTextFor(modelItem => item.IsDone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientPhone)
+            </td>
+        </tr>
+    }
+</table>
+<hr />
+<div>
+    @Html.ActionLink("Другие действия", "Index")
+</div>

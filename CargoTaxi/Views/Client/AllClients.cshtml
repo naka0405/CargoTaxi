@@ -1,0 +1,58 @@
+﻿@model IList<CargoTaxi.Models.UserViewModel>
+@{
+    ViewBag.Title = "AllClients";
+}
+
+<h2>Клиенты</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Имя")
+        </th>
+        <th>
+            @Html.DisplayName("Фамилия")
+        </th>
+        <th>
+            @Html.DisplayName("Номер телефона")
+        </th>
+        <th>
+            @Html.DisplayName("Email")
+        </th>       
+        <th>
+            @Html.DisplayName("Заказы")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+           
+            <td>               
+                @Html.ActionLink("Заказы", "AllClientOrders", "Client", new { id = item.Id }, null)
+            </td>
+            <td>
+               @*<a class="btn btn-primary btn-sm" type="button" href="/Client/EditClientProfile/@item.Id">Изменить</a>*@
+                <a class="btn btn-primary btn-sm" type="button" href="/Client/DeleteClient/@item.Id">Удалить</a>
+            </td>
+        </tr>
+    }
+
+</table>
+<hr/>
+<div>
+    @Html.ActionLink("Назад", "Index", "Admin")
+</div>
+
+

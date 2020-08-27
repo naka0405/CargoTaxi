@@ -1,0 +1,93 @@
+﻿@model CargoTaxi.Models.AllClientOrdersViewModel
+
+    <link href="~/Content/Client/ClientCss.css" rel="stylesheet" type="text/css" />
+<p>
+    @Html.ActionLink("Создать еще заказ", "CreateOrder")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayName("Номер заказа")
+        </th>
+        <th>
+            @Html.DisplayName("Дата")
+        </th>
+        <th>
+            @Html.DisplayName("Время(начало)")
+        </th>
+        <th>
+            @Html.DisplayName("Время(конец)")
+        </th>
+        <th>
+            @Html.DisplayName("Адрес отправки")
+        </th>
+        <th>
+            @Html.DisplayName("Адрес доставки")
+        </th>
+
+        <th>
+            @Html.DisplayName("Номер машины")
+        </th>
+
+        <th>
+            @Html.DisplayName("Категория машины")
+        </th>
+            </tr>
+
+@foreach (var item in Model.Orders) {
+<tr>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Number)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StartTime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FinishTime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StartAdress)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FinishAdress)
+    </td>
+
+    <td>
+        @if (item.Car != null)
+        {
+            @Html.DisplayFor(modelItem => item.Car)
+        }
+
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Category)
+    </td>
+    @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>*@
+</tr>
+}
+</table>
+@if(User.IsInRole("Admin"))
+{
+<div>
+    @Html.ActionLink("Назад", "AllClients", "Client")
+    <br />
+    @Html.ActionLink("Другие действия", "Index","Admin")
+</div>
+}
+else
+{ 
+<div>   
+   @* @Html.ActionLink("Назад", "AllClients", "Client")*@
+    <br/>
+    @Html.ActionLink("Другие действия", "Index")
+</div>}

@@ -1,0 +1,56 @@
+﻿@model CargoTaxi.Models.ListCarCategories
+
+    <link href="~/Content/Client/ClientCss.css" rel="stylesheet" type="text/css" />
+
+    <h4 class="title_PartialView">Категории машин</h4>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Категория")
+        </th>
+        <th>
+            @Html.DisplayName("Грузоподъемность(тонн)")
+        </th>
+        <th>
+            @Html.DisplayName("Ширина грузового отсека(м)")
+        </th>
+        <th>
+            @Html.DisplayName("Высота грузового отсека(м)")
+        </th>
+        <th>
+            @Html.DisplayName("Длина грузового отсека(м)")
+        </th>
+        @*<th>
+            <image src="/Images/TaxStandart.jpeg" style="height:130px;">
+        </th>
+
+        <th>
+            <image src="/Images/TaxMax.jpeg" style="height:130px">
+        </th>*@
+    </tr>
+
+    @foreach (var item in Model.CarCategories)
+    {
+<tr>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LoadTonCapacity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.WidthCargoSpace)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.HeightCargoSpace)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LengthCargoSpace)
+    </td>    
+</tr>
+    }
+
+</table>
+
+

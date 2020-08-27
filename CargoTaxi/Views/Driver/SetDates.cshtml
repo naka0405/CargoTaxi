@@ -1,0 +1,51 @@
+﻿@model CargoTaxi.Models.DatesModel
+
+@*@section scripts{
+        <script src="@Url.Content("~/Scripts/DriverApi/DriverApi.js")"></script>
+    }*@
+<link href="~/Content/Driver/DriverCss.css" rel="stylesheet" type="text/css" />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Укажите период формирования отчета</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            @Html.Label("Дата начала периода (в формате дд/мм/гг)", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Дата окончания периода (в формате дд/мм/гг)", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FinishDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FinishDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Отправить" class="btn btn-default, my_btn" id="btn_api_submit1" />
+            </div>
+        </div>
+    </div>
+
+    <div class="list-container">
+
+
+    </div>
+}
+
+<div>
+        @Html.ActionLink("Другие действия", "Index")
+    </div>
+

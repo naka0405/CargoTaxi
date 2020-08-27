@@ -1,0 +1,44 @@
+﻿@model CargoTaxi.Models.CarCategoryViewModel
+@{ViewBag.Title = "Category Details - \"@Model.Name\""; }
+
+
+<h2>Категория машины - "@Model.Name"</h2>
+
+@*<dl class="row details first">
+    <dt class="col-sm-2">Id</dt>
+    <dd class="col-sm-10">@Model.Id</dd>
+</dl>*@
+<dl class="row details">
+    <dt class="col-sm-2">Название</dt>
+    <dd class="col-sm-10">@Model.Name</dd>
+</dl>
+<dl class="row details">
+    <dt class="col-sm-2">Грузоподъемность</dt>
+    <dd class="col-sm-10">@Model.LoadTonCapacity</dd>
+</dl>
+<dl class="row details">
+    <dt class="col-sm-2">Высота</dt>
+    <dd class="col-sm-10">@Model.HeightCargoSpace</dd>
+</dl>
+<dl class="row details">
+    <dt class="col-sm-2">Длина</dt>
+    <dd class="col-sm-10">@Model.LengthCargoSpace</dd>
+</dl>
+<dl class="row details">
+    <dt class="col-sm-2">Ширина</dt>
+    <dd class="col-sm-10">@Model.WidthCargoSpace</dd>
+</dl>
+<dl class="row details">
+    <dt class="col-sm-2">Машины</dt>
+    <dd class="col-sm-10">
+        <ul class="list-unstyled">
+            @foreach (var item in Model.Cars)
+            {
+<li>- <a href="/Car/CarDetails/@item.Id">@item.RegistrNumber</a></li>            }
+        </ul>
+    </dd>
+</dl>
+<div>
+    @Html.ActionLink("Назад к списку", "AllCarCategories")
+</div>
+

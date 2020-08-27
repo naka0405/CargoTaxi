@@ -1,0 +1,129 @@
+﻿body {
+    background-color: antiquewhite;
+    font-size: 16px;
+}
+h3 {
+    text-align: center;
+}
+
+#item_Number{
+width:100px;
+}
+#item_Date {
+    width: 100px;
+}
+#item_StartTime {
+    width: 55px;
+}
+#item_FinishTime {
+    width: 55px;
+}
+#item_StartAdress {
+    width: 160px;
+}
+#item_FinishAdress {
+    width: 160px;
+}
+#item_Car{
+    width: 110px;
+}
+#item_Category {
+    width: 90px;
+}
+#item_IsDone {
+    width: 30px;
+}
+#item_ClientPhone {
+    width: 110px;
+}
+
+
+table {
+    border-spacing: 0 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}
+
+th {
+    padding: 10px 20px;
+    background: #56433D;
+    color: #F9C941;
+    border-right: 2px solid;
+    font-size: 0.9em;
+}
+
+    th:first-child {
+        text-align: left;
+    }
+
+    th:last-child {
+        border-right: none;
+    }
+
+td {
+    vertical-align: middle;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    border-top: 2px solid #56433D;
+    border-bottom: 2px solid #56433D;
+    border-right: 2px solid #56433D;
+}
+
+    td:first-child {
+        border-left: 2px solid #56433D;
+        /*border-right: none;*/
+    }
+
+    td:nth-child(2) {
+        text-align: left;
+    }
+.body-content {
+    margin-top: 100px;
+}
+.driver_button {
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    padding: .8em 1em calc(.8em + 3px);
+    border-radius: 3px;
+    background: rgb(64,199,129);
+    box-shadow: 0 -3px rgb(53,167,110) inset;
+    transition: 0.2s;
+}
+
+    .driver_button:hover {
+        background: rgb(53, 167, 110);
+    }
+
+    .driver_button:active {
+        background: rgb(33,147,90);
+        box-shadow: 0 3px rgb(33,147,90) inset;
+    }
+
+#btn_api_submit1, div input.btn.btn-default {
+    background: #d1ac7c;
+    display: inline-block;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    user-select: none;
+    padding: .5em 2em;
+    outline: none;
+    border: 2px solid;
+    border-radius: 1px;
+    transition: 0.2s;
+}
+    #btn_api_submit1:hover, div input.btn.btn-default:hover {
+        background: #F9C941;
+    }
+
+    #btn_api_submit1:active, div input.btn.btn-default:active {
+        background: #d1ac7c;
+    }
+   /* {
+    background-color: #ce8931;
+    color: ##333;
+    border: 1.5px solid;
+    font-size: 1.3em;
+}*/

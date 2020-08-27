@@ -1,0 +1,88 @@
+﻿@model CargoTaxi.Models.MessageViewModel
+
+    <link href="~/Content/Client/ClientCss.css" rel="stylesheet" type="text/css" />
+<div>
+    <h2>Ваш заказ сформирован</h2>
+    <h4>Ожидайте, с вами свяжутся в ближайшее время</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Имя")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Фамилия")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Номер телефона")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.PhoneNumber)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayName("")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayName("Номер заказа")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Дата заказа")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Ориентировочное начальное время")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Адрес отправки")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartAdress)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Адрес доставки")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinishAdress)
+        </dd>
+
+    </dl>
+</div>
+<hr/>
+<p>
+    @Html.ActionLink("Создать еще заказ", "CreateOrder")
+    <br/>
+    @Html.ActionLink("Мои заказы", "GetAllClientOrders")
+</p>

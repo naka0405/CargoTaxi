@@ -1,0 +1,31 @@
+﻿@model CargoTaxi.Models.CarViewModel
+
+    <div>
+        <h4>Машина - @Model.RegistrNumber</h4>
+        <hr />
+        @*<dl class="row details first">
+            <dt class="col-sm-2">Id</dt>
+            <dd class="col-sm-10">@Model.Id</dd>
+        </dl>*@
+        <dl class="row details">
+            <dt class="col-sm-2">Регистрационный номер</dt>
+            <dd class="col-sm-10">@Model.RegistrNumber</dd>
+        </dl>
+        <dl class="row details">
+            <dt class="col-sm-2">Категория</dt>
+            <dd class="col-sm-10"><a href="/CarCategory/CarCategoryDetails/@Model.Category.Id">@Model.Category.Name</a></dd>
+        </dl>
+        <dl class="row details">
+            <dt class="col-sm-2">Заказы</dt>
+            <dd class="col-sm-10">
+                <ul class="list-unstyled">
+                    @foreach (var item in Model.Orders)
+                    {
+        <li> <a href="/Order/OrderDetails/@item.Id">@item.Number</a></li>            }
+                </ul>
+            </dd>
+        </dl>
+</div>
+    <div>
+        @Html.ActionLink("Назад к списку", "AllCars")
+    </div>

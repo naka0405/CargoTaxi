@@ -1,0 +1,32 @@
+﻿
+@section scripts{
+    <script src="@Url.Content("~/Scripts/SPA/Index.js")"></script>
+}
+<link href="~/Content/Driver/DriverCss.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Функционал водителя</h2>
+
+<button type="button" id="edit_order" class="driver_button" onclick="location.href='@Url.Action("CheckOrder", "Driver")'">Изменить заказ</button>
+<button type="button" id="all_todayOrders" class="driver_button" onclick="location.href='@Url.Action("GetTodayOrders", "Driver")'">Заказы на сегодня</button>
+<button type="button" id="weekOrders" class="driver_button" onclick="location.href='@Url.Action("GetOrdersForNextWeek", "Driver")'">Заказы на следующую неделю</button>
+<button type="button" id="all_myOrders" class="driver_button" onclick="location.href='@Url.Action("GetMyOrders", "Driver")'">Все мои заказы</button>
+<button type="button" id="all_doneOrders" class="driver_button" onclick="location.href='@Url.Action("GetMyDoneOrders", "Driver")'">Выполненные заказы</button>
+
+
+<div>
+
+</div>
+
+<div class="list-container">
+
+
+</div>
+<div class="list-container1">
+
+
+</div>
+

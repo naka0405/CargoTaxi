@@ -1,0 +1,79 @@
+﻿@model IEnumerable<CargoTaxi.Models.DriverOrderViewModel>
+
+<link href="~/Content/Driver/DriverCss.css" rel="stylesheet" type="text/css" />
+<div>
+    <h3>Ближайшие заказы</h3>
+    @*<hr />*@
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayName("Номер")
+            </th>
+            <th>
+                @Html.DisplayName("Дата")
+            </th>
+            <th>
+                @Html.DisplayName("Адрес отправки")
+            </th>
+            <th>
+                @Html.DisplayName("Адрес доставки")
+            </th>
+            <th>
+                @Html.DisplayName("Начальное время")
+            </th>
+            <th>
+                @Html.DisplayName("Конечное время")
+            </th>
+            <th>
+                @Html.DisplayName("Машина")
+            </th>
+            <th>
+                @Html.DisplayName("Категория")
+            </th>
+            <th>
+                @Html.DisplayName("Статус заказа")
+            </th>
+            <th>
+                @Html.DisplayName("Телефон клиента")
+            </th>            
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartAdress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FinishAdress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FinishTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Car)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarCategory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsDone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClientPhone)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<p></p>

@@ -1,0 +1,92 @@
+﻿@model List<CargoTaxi.Models.OrderViewModel>
+@{
+    ViewBag.Title = "Orders";
+}
+
+<h2>Все заказы</h2>
+
+
+<link href="~/Content/Client/ClientCss.css" rel="stylesheet" type="text/css" />
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayName("Номер заказа")
+        </th>
+        <th>
+            @Html.DisplayName("Дата")
+        </th>
+        <th>
+            @Html.DisplayName("Время(начало)")
+        </th>
+        <th>
+            @Html.DisplayName("Время(конец)")
+        </th>
+        <th>
+            @Html.DisplayName("Адрес отправки")
+        </th>
+        <th>
+            @Html.DisplayName("Адрес доставки")
+        </th>
+
+        <th>
+            @Html.DisplayName("Номер машины")
+        </th>
+
+        <th>
+            @Html.DisplayName("Категория машины")
+        </th>
+        <th>
+            @Html.DisplayName("Клиент")
+        </th>
+
+        <th>
+            @Html.DisplayName("Телефон клиента")
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Number)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Date, new{ htmlAttributes = new { style = "width:200px" } })
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StartTime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FinishTime)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StartAdress)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FinishAdress)
+    </td>
+    <td>
+        @if (item.Car != null)
+        {
+            @Html.DisplayFor(modelItem => item.Car.RegistrNumber)
+        }
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Category.Name)
+    </td>
+    <td>
+        @item.Client.FirstName @item.Client.LastName        
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Client.PhoneNumber)
+    </td>   
+</tr>
+    }
+</table>
+<div>
+    @Html.ActionLink("Другие действия", "Index", "Admin")
+</div>
+

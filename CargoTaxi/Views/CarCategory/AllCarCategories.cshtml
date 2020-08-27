@@ -1,0 +1,33 @@
+﻿@model IList<CargoTaxi.Models.CarCategoryViewModel>
+
+@{
+    ViewBag.Title = "AllCarCategories";
+}
+
+<h2>Категории  машин</h2>
+
+
+<table class="table table-striped">
+    <tr>
+        <th>Код в базе</th>
+        <th>Название</th>
+        <th>Машины</th>
+    </tr>
+    @foreach (var category in Model)
+    {
+        <tr>
+            <td>@category.Id</td>
+            <td><a href="/CarCategory/CarCategoryDetails/@category.Id">@category.Name</a></td>
+            <td>
+                <ul>
+                    @foreach (var car in category.Cars)
+                    {
+                        <li><a href="/Car/CarDetails/@car.Id">@car.RegistrNumber</a></li>
+}
+                </ul>
+            </td>
+        </tr>
+}
+</table>
+
+

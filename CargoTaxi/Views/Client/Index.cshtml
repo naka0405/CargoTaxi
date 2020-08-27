@@ -1,0 +1,28 @@
+﻿@section scripts{
+    <script src="@Url.Content("~/Scripts/SPA/Index.js")"></script>
+}
+<link href="~/Content/Client/ClientCss.css" rel="stylesheet" type="text/css" />
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Функционал клиента</h2>
+
+<button type="button" id="editProfile" class="client_button" onclick="location.href='@Url.Action("EditClientProfile", "Client")'">Редактировать профиль</button>
+<button type="button" id="create_order" class="client_button" onclick="location.href='@Url.Action("CreateOrder", "Client")'">Создать заказ</button>
+<button type="button" id="all_myOrders" class="client_button" onclick="location.href='@Url.Action("AllClientOrders", "Client")'">Все мои заказы</button>
+
+<div>
+
+</div>
+
+<div class="list-container">
+
+
+</div>
+<div class="list-container1">
+
+
+</div>
