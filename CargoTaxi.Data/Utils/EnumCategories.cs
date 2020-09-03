@@ -8,6 +8,6 @@ namespace CargoTaxi.Data.Utils
 {
     public enum EnumCategories
     {
-        Minimum, Standart, Maximum
+        Минимум, Стандарт, Максимум
     }
 }

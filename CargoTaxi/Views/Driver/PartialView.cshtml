@@ -6,34 +6,34 @@
     @*<hr />*@
     <table class="table">
         <tr>
-            <th>
+            <th class="number">
                 @Html.DisplayName("Номер")
             </th>
-            <th>
+            <th class="date">
                 @Html.DisplayName("Дата")
             </th>
-            <th>
+            <th class="adr">
                 @Html.DisplayName("Адрес отправки")
             </th>
-            <th>
+            <th class="adr">
                 @Html.DisplayName("Адрес доставки")
             </th>
-            <th>
+            <th class="startTime">
                 @Html.DisplayName("Начальное время")
             </th>
-            <th>
+            <th class="startTime">
                 @Html.DisplayName("Конечное время")
             </th>
-            <th>
+            <th class="car">
                 @Html.DisplayName("Машина")
             </th>
-            <th>
+            <th class="category">
                 @Html.DisplayName("Категория")
             </th>
-            <th>
+            <th class="isDone">
                 @Html.DisplayName("Статус заказа")
             </th>
-            <th>
+            <th class="phone">
                 @Html.DisplayName("Телефон клиента")
             </th>            
         </tr>
@@ -41,34 +41,34 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td class="number">
                     @Html.DisplayFor(modelItem => item.Number)
                 </td>
-                <td>
+                <td class="date">
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
-                <td>
+                <td class="adr">
                     @Html.DisplayFor(modelItem => item.StartAdress)
                 </td>
-                <td>
+                <td class="adr">
                     @Html.DisplayFor(modelItem => item.FinishAdress)
                 </td>
-                <td>
+                <td class="startTime">
                     @Html.DisplayFor(modelItem => item.StartTime)
                 </td>
-                <td>
+                <td class="startTime">
                     @Html.DisplayFor(modelItem => item.FinishTime)
                 </td>
-                <td>
+                <td class="car">
                     @Html.DisplayFor(modelItem => item.Car)
                 </td>
-                <td>
+                <td class="category">
                     @Html.DisplayFor(modelItem => item.CarCategory)
                 </td>
-                <td>
+                <td class="isDone">
                     @Html.DisplayFor(modelItem => item.IsDone)
                 </td>
-                <td>
+                <td class="phone">
                     @Html.DisplayFor(modelItem => item.ClientPhone)
                 </td>
             </tr>

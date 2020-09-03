@@ -25,25 +25,33 @@
                     @*<li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>*@
                     <li>@Html.ActionLink("Информация", "About", "Home")</li>
                     <li>@Html.ActionLink("Связаться", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Панель клиента", "Index", "Client")</li>
-                    <li>@Html.ActionLink("Панель водителя", "Index", "Driver")</li>
-                    <li>@Html.ActionLink("Панель админа", "Index", "Admin")</li>
-        @*<li>@Html.ActionLink("Заказы за день", "GetTodayOrders", "Driver")</li>
-        <li>@Html.ActionLink("Изменить заказ", "CheckOrder", "Driver")</li>*@
-                    @*, new { id = UrlParameter.Optional }, htmlAttributes: null*@
+                    @if (this.User.IsInRole("Client"))
+                    {
+                        <li>@Html.ActionLink("Услуги", "Index", "Client")</li>
+                    }
+                    @if (this.User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Кабинет администратора", "Index", "Admin")</li>
+                    }
+                    @if (this.User.IsInRole("Driver"))
+                    {
+                        <li>@Html.ActionLink("Кабинет водителя", "Index", "Driver")</li>
+
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container body-content">
-        
+
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - мое приложение ASP.NET</p>
-        </footer>
+
     </div>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - мое приложение ASP.NET</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

@@ -1,13 +1,9 @@
 ﻿@model CargoTaxi.Models.UserViewModel
-ViewBag.Title = "Driver Details ";
+@{ViewBag.Title = "Driver Details ";}
 
 
-<h2>Водитель - "@Model.FirstName"+" "+"@Model.LastName"</h2>
+<h2>Водитель - @Model.FirstName @Model.LastName</h2>
 
-<dl class="row details first">
-    <dt class="col-sm-2">Id</dt>
-    <dd class="col-sm-10">@Model.Id</dd>
-</dl>
 <dl class="row details">
     <dt class="col-sm-2">Имя</dt>
     <dd class="col-sm-10">@Model.FirstName</dd>
@@ -34,18 +30,22 @@ ViewBag.Title = "Driver Details ";
         <ul class="list-unstyled">
             @foreach (var item in Model.Cars)
             {
-                <li>- <a href="/CargoTaxi/Category/@item.Id">@item.RegistrNumber</a></li>
-             }
+<li>- <a href="/Car/CarDetails/@item.Id">@item.RegistrNumber</a></li>}
         </ul>
     </dd>
 </dl>
-<dl class="row details">
-    <dt class="col-sm-2">Заказы</dt>
-    <dd class="col-sm-10">
-        <ul class="list-unstyled">
-            @foreach (var item in Model.Orders)
-            {
-<li>- <a href="/CargoTaxi/Category/@item.Id">@item.Number</a></li>}
-        </ul>
-    </dd>
-</dl>
+@*<dl class="row details">
+        <dt class="col-sm-2">Заказы</dt>
+        <dd class="col-sm-10">
+            <ul class="list-unstyled">
+                @foreach (var item in Model.Orders)
+                {
+    <li>- <a href="/Order/OrderDetails/@item.Id">@item.Number</a></li>}
+            </ul>
+        </dd>
+    </dl>*@
+<hr />
+<div>
+    @Html.ActionLink("Другие действия", "GetAllDrivers", "Admin")   <br />
+    @Html.ActionLink("Назад", "AllCars", "Car")
+</div>

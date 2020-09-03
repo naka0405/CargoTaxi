@@ -1,0 +1,36 @@
+﻿@model IList<CargoTaxi.Models.CarViewModel>
+@{
+    ViewBag.Title = "AllCarsIsLoad";
+}
+
+<h3>Машины и категории</h3>
+<table class="table table-striped">
+    <tr>
+        <th>Ин</th>
+        <th>Номер</th>
+        <th>Категория</th>
+        <th>Активна</th>
+        <th>Водитель</th>
+        <th>Заказы</th>        
+    </tr>
+    @foreach (var car in Model)
+    {
+        <tr>
+            <td>@car.Id</td>
+            <td><a href="/Car/CarDetails/@car.Id">@car.RegistrNumber</a></td>
+            <td><a href="/CarCategory/CarCategoryDetails/@car.Category.Id">@car.Category.Name</a></td>
+            <td>@Html.DisplayFor(m => car.IsLoad)</td>
+            <td><a href="/Admin/DriverDetails/@car.DriverId">@car.Driver.LastName  @car.Driver.FirstName</a></td>
+
+            <td>
+                <ul>
+                    @foreach (var order in car.Orders)
+                    {
+                        <li><a href="/Order/OrderDetails/@order.Id">@order.Number</a></li>
+                    }
+                </ul>
+            </td>
+        </tr>
+        }
+</table>
+

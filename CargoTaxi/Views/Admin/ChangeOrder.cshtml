@@ -1,0 +1,109 @@
+﻿@model CargoTaxi.Models.ChangeOrderViewModel
+<link href="~/Content/Driver/DriverCss.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "ChangeOrder";
+}
+
+<h2>Изменить заказ</h2>
+
+@using (Html.BeginForm("ChangeOrder", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">       
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayName("Номер")
+                </th>
+                <th>
+                    @Html.DisplayName("Дата")
+                </th>
+                <th>
+                    @Html.DisplayName("Адрес отправки")
+                </th>
+                <th>
+                    @Html.DisplayName("Адрес доставки")
+                </th>
+                <th>
+                    @Html.DisplayName("Начальное время")
+                </th>
+                @*<th>
+                    @Html.DisplayName("Конечное время")
+                </th>*@
+                <th>
+                    @Html.DisplayName("Номер авто")
+                </th>
+                <th>
+                    @Html.DisplayName("Категория")
+                </th>
+                @*<th>
+                    @Html.DisplayName("Статус заказа")
+                </th>*@
+                <th>
+                    @Html.DisplayName("Телефон клиента")
+                @*</th>*@
+
+            </tr>
+            @*@for (int i = 0; i < Model.Count; i++)
+            *@
+                @Html.HiddenFor(m => m.Id)
+                <tr>
+                    <td class="number">
+                        @Html.EditorFor(m => m.Number, new { htmlAttributes = new { @disabled = "true", @class = "form-control, number" } })                       
+                    </td>
+                    <td class="date">
+                        @Html.EditorFor(m => m.Date, new { htmlAttributes = new { @class = "form-control, date" } })
+                        @Html.ValidationMessageFor(m => m.Date, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="adr">
+                        @Html.EditorFor(m => m.StartAdress, new { htmlAttributes = new { @class = "form-control, adr" } })
+                        @Html.ValidationMessageFor(m => m.StartAdress, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="adr">
+                        @Html.EditorFor(m => m.FinishAdress, new { htmlAttributes = new { @class = "form-control, adr" } })
+                        @Html.ValidationMessageFor(m => m.FinishAdress, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="startTime">
+                        @Html.EditorFor(m => m.StartTime, new { htmlAttributes = new { @class = "startTime" } })
+                        @Html.ValidationMessageFor(m => m.StartTime, "", new { @class = "text-danger" })
+                    </td>
+                    @*<td class="startTime">
+                        @Html.EditorFor(m => m.FinishTime, new { htmlAttributes = new { @class = "startTime" } })
+                    </td>*@
+                <td class="car">
+                    @Html.DropDownListFor(m => m.CarId, Model.CarRegisterNumbers as SelectList)@*new { htmlAttributes = new { @class = "form-control, car" } })*@
+                    @*@Html.ValidationMessageFor(m => m.CarRegisterNumber, "", new { @class = "text-danger" })*@
+                </td>
+                    <td class="category">
+                        @Html.DropDownListFor(model => model.CarCategoryId, Model.Categories as SelectList)
+                        @*@Html.EditorFor(m => m.Category.Name, new { htmlAttributes = new { @disabled = "true", @class = "form-control, category" } })*@
+                    </td>
+                    @*<td class="isDone">
+                        @Html.EditorFor(m => m.IsDone, new { htmlAttributes = new { @disabled = "true", @class = "form-control, isDone" } }))
+                    </td>*@
+                <td class="phone">
+                    @Html.EditorFor(m => m.ClientPhoneNumber, new { htmlAttributes = new { @class = "form-control, phone" } })
+                    @Html.ValidationMessageFor(m => m.ClientPhoneNumber, "", new { @class = "text-danger" })
+                </td>
+                </tr>
+            @*}*@
+        </table>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Сохранить" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+<div class="partialView" style="float:left">
+    @{Html.RenderAction("AllCarsIsLoad", "Car"); }
+</div>
+
+<div>
+    @Html.ActionLink("Другие действия", "Index")
+</div>
+
+

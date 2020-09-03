@@ -9,10 +9,10 @@ namespace Business.Services
 {
     public class CarCategoryService : ICarCategoryService
     {
-        private readonly ICarCategoryRepozitory _carCategoryRepozitoriy;
+        private readonly ICarCategoryRepository _carCategoryRepozitoriy;
         public readonly IMapper _mapper;
 
-        public CarCategoryService(ICarCategoryRepozitory carCategoryRepozitoriy, IMapper mapper)
+        public CarCategoryService(ICarCategoryRepository carCategoryRepozitoriy, IMapper mapper)
         {
             _carCategoryRepozitoriy = carCategoryRepozitoriy;
             _mapper = mapper;
@@ -27,7 +27,7 @@ namespace Business.Services
 
         public CarCategoryModel GetCarCategoryById(int? id)
         {
-            var carCategory = _carCategoryRepozitoriy.GetCategoryById(id);
+            var carCategory = _carCategoryRepozitoriy.GetCarCategoryById(id);
             var carCategoryBl = _mapper.Map<CarCategoryModel>(carCategory);
             return carCategoryBl;
         }

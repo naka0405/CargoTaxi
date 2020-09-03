@@ -1,13 +1,12 @@
 ﻿$('#btn_api_submit1').click(function () {
     var endDateVal = $("#FinishDate").val()
     var startDateVal = $("#StartDate").val()
-    var url = "?StartDate =" + startDateVal + "&FinishDate=" + endDateVal;
+    var url = "?startDate=" + startDateVal + "&finishDate=" + endDateVal;
 
     //get data from inputs and add to query
     $.ajax({
         type: 'Get',
-        url: '/api/driverApi/get' + encodeURIComponent (url),
-        //data: { userId: Id },
+        url: '/api/driverApi/get' + url,
         success: function (order) {
             var result = '';
            

@@ -11,7 +11,7 @@
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>Заказы на @DateTime.Now.ToShortDateString()</h4>
+    @*<h4>Заказы на @DateTime.Now.ToShortDateString()</h4>*@
 
     <table class="table">
         <tr>
@@ -51,35 +51,35 @@
         {
             @Html.HiddenFor(m => m[i].Id)
             <tr>
-                <td>
-                    @Html.EditorFor(m => m[i].Number, new { htmlAttributes = new { @disabled = "true", @class = "form-control" } })
+                <td class="number">
+                    @Html.EditorFor(m => m[i].Number, new { htmlAttributes = new { @disabled = "true", @class = "form-control, number" } })
                 </td>
-                <td>
-                    @Html.EditorFor(m => m[i].Date, new { htmlAttributes = new { @disabled = "true", @class = "form-control" } })
+                <td class="date">
+                    @Html.EditorFor(m => m[i].Date, new { htmlAttributes = new { @disabled = "true", @class = "form-control, date" } })
                 </td>
-                <td>
-                    @Html.EditorFor(m => m[i].StartAdress, new { htmlAttributes = new { @disabled = "true", @class = "form-control" } })
+                <td class="adr"> 
+                    @Html.EditorFor(m => m[i].StartAdress, new { htmlAttributes = new { @disabled = "true", @class = "form-control, adr" } })
                 </td>
-                <td>
-                    @Html.EditorFor(m => m[i].FinishAdress, new { htmlAttributes = new { @disabled = "true", @class = "form-control" } })
+                <td class="adr">
+                    @Html.EditorFor(m => m[i].FinishAdress, new { htmlAttributes = new { @disabled = "true", @class = "form-control, adr" } })
+                </td class="adr">
+                <td  class = "startTime">
+                    @Html.EditorFor(m => m[i].StartTime,  new { htmlAttributes = new { @class = "startTime" } })
                 </td>
-                <td>
-                    @Html.EditorFor(m => m[i].StartTime)
+                <td  class = "startTime">
+                    @Html.EditorFor(m => m[i].FinishTime, new { htmlAttributes = new { @class = "startTime" } })
                 </td>
-                <td>
-                    @Html.EditorFor(m => m[i].FinishTime)
+                <td class="car">
+                    @Html.EditorFor(m => m[i].Car, new { htmlAttributes = new { @disabled = "true", @class = "form-control, car" } })
                 </td>
-                <td>
-                    @Html.EditorFor(m => m[i].Car, new { htmlAttributes = new { @disabled = "true", @class = "form-control" } })
+                <td class="category">
+                    @Html.EditorFor(m => m[i].CarCategory, new { htmlAttributes = new { @disabled = "true", @class = "form-control, category" } })
                 </td>
-                <td>
-                    @Html.EditorFor(m => m[i].CarCategory, new { htmlAttributes = new { @disabled = "true", @class = "form-control" } })
-                </td>
-                <td>
+                <td class="isDone">
                     @Html.EditorFor(m => m[i].IsDone)
                 </td>
-                <td>
-                    @Html.EditorFor(m => m[i].ClientPhone, new { htmlAttributes = new { @disabled = "true", @class = "form-control" } })
+                <td class="phone">
+                    @Html.EditorFor(m => m[i].ClientPhone, new { htmlAttributes = new { @disabled = "true", @class = "form-control, phone" } })
                 </td>
             </tr>
         }

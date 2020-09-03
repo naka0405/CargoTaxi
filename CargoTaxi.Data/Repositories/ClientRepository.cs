@@ -8,7 +8,7 @@ using System.Data.Entity;
 
 namespace CargoTaxi.Data.Repozitories
 {
-    public class ClientRepozitoriy : IClientRepozitoriy
+    public class ClientRepository : IClientRepository
     {
         public List<ApplicationUser> GetAllClients()
         {
@@ -24,6 +24,14 @@ namespace CargoTaxi.Data.Repozitories
                 return allClients;
             }
         }
+        public ApplicationUser GetClientById(string id)
+        {
+            using (var ctx = new TaxiDbContext())
+            {
+                var clientInBd = ctx.Users.Where(x => x.Id == id).FirstOrDefault();
+                return clientInBd;
+            }
+        }
 
         public void DeleteClient(string id)
         {
@@ -36,19 +44,6 @@ namespace CargoTaxi.Data.Repozitories
                 ctx.SaveChanges();
             }
         }
-
-        public void CreateOrder(Order order, string id)//, 
-        {
-            using (var ctx = new TaxiDbContext())
-            {
-                var clientInDb = ctx.Users.Where(x => x.Id == id).FirstOrDefault();
-                ctx.Orders.Add(order);
-                clientInDb.Orders.Add(order);
-                ctx.SaveChanges();
-            }
-        }
-
-
         public void EditClientProfile(ApplicationUser client)
         {
             using (var ctx = new TaxiDbContext())
@@ -71,5 +66,12 @@ namespace CargoTaxi.Data.Repozitories
                 return allOrders;
             }
         }
+        //public ApplicationUser Details(string id)
+        //{
+        //    using (var ctx = new TaxiDbContext())
+        //    {
+        //        var client = ctx.Users.Where(x => x.Id == id).FirstOrDefault();
+        //        return client;
+        //}
     }
 }

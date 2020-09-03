@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace CargoTaxi.Models
 {
     public class CarViewModel
     {
+        [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
         public string RegistrNumber { get; set; }
 

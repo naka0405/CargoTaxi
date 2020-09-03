@@ -17,7 +17,7 @@ namespace CargoTaxi.Data
         {
             var minCategory = new CarCategory() 
             {
-                Name = EnumCategories.Minimum,
+                Name = EnumCategories.Минимум,
                 LoadTonCapacity = 1,
                 HeightCargoSpace = 1.6,
                 WidthCargoSpace=1.5,
@@ -25,7 +25,7 @@ namespace CargoTaxi.Data
             };
             var standartCategory = new CarCategory()
             {
-                Name = EnumCategories.Standart,
+                Name = EnumCategories.Стандарт,
                 LoadTonCapacity = 1.2,
                 HeightCargoSpace = 1.7,
                 WidthCargoSpace = 1.5,
@@ -33,7 +33,7 @@ namespace CargoTaxi.Data
             };
             var maxCategory = new CarCategory()
             {
-                Name = EnumCategories.Maximum,
+                Name = EnumCategories.Максимум,
                 LoadTonCapacity = 1.5,
                 HeightCargoSpace = 1.7,
                 WidthCargoSpace = 1.5,
@@ -69,7 +69,7 @@ namespace CargoTaxi.Data
             {
                 // добавляем для пользователя роль
                 userManager.AddToRole(admin.Id, roleAdmin.Name);
-                userManager.AddToRole(admin.Id, roleClient.Name);
+                //userManager.AddToRole(admin.Id, roleClient.Name);
             }
 
             var driver1 = new ApplicationUser() 
@@ -87,7 +87,7 @@ namespace CargoTaxi.Data
             {
                 // добавляем для пользователя роль
                 userManager.AddToRole(driver1.Id, roleDriver.Name);
-                userManager.AddToRole(driver1.Id, roleClient.Name);
+                //userManager.AddToRole(driver1.Id, roleClient.Name);
             }
             var car1 = new Car() { RegistrNumber = "Ax112345Xa", CategoryId = 1};
             driver1.Cars.Add(car1);
@@ -108,7 +108,7 @@ namespace CargoTaxi.Data
             {
                 // добавляем для пользователя роль
                 userManager.AddToRole(driver2.Id, roleDriver.Name);
-                userManager.AddToRole(driver2.Id, roleClient.Name);
+               // userManager.AddToRole(driver2.Id, roleClient.Name);
             }
             var car2 = new Car() { RegistrNumber = "Am654987Xa", CategoryId = 3 };
             var car3 = new Car() { RegistrNumber = "Xa526341Xa", CategoryId = 2 };
@@ -130,7 +130,7 @@ namespace CargoTaxi.Data
             {
                 // добавляем для пользователя роль
                 userManager.AddToRole(driver3.Id, roleDriver.Name);
-                userManager.AddToRole(driver3.Id, roleClient.Name);
+                //userManager.AddToRole(driver3.Id, roleClient.Name);
             }
             var car4 = new Car() { RegistrNumber = "Bl789456Z", CategoryId = 2 };
             driver3.Cars.Add(car4);
@@ -154,6 +154,7 @@ namespace CargoTaxi.Data
                 Number = "01/15/08/20",
                 Date = new DateTime(2020, 08, 16),
                 StartTime="15-45",
+                PartOfDay=EnumDayParts.День,
                 CarCategoryId = 2,
                 StartAdress = "Волонтерская 74/37",
                 FinishAdress = "Холодногорская 6",                
@@ -180,6 +181,7 @@ namespace CargoTaxi.Data
                 Number = "01/15/08/20",
                 Date = new DateTime(2020, 08, 18),
                 StartTime = "15-00",
+                PartOfDay=EnumDayParts.День,
                 CarCategoryId = 1,
                 StartAdress = "Geroev Truda 18-81",
                 FinishAdress = "Illinskaja 63/16",                

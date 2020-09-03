@@ -1,87 +1,98 @@
-﻿@model List<CargoTaxi.Models.DriverOrderViewModel>
-   
+﻿@model CargoTaxi.Models.ListDriverOrdersViewModel
+
 @{
     ViewBag.Title = "GetMyOrders";
 }
-<div class="partialView">
-    @Html.Action("GetPartialView", "Driver")   
-</div>
-<br/>
-<hr/>
-<p>
-<h2>@ViewBag.Message</h2>
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayName("Номер")
-        </th>
-        <th>
-            @Html.DisplayName("Дата")
-        </th>
-        <th>
-            @Html.DisplayName("Адрес отправки")
-        </th>
-        <th>
-            @Html.DisplayName("Адрес доставки")
-        </th>
-        <th>
-            @Html.DisplayName("Начальное время")
-        </th>
-        <th>
-            @Html.DisplayName("Конечное время")
-        </th>
-        <th>
-            @Html.DisplayName("Машина")
-        </th>
-        <th>
-            @Html.DisplayName("Категория")
-        </th>
-        <th>
-            @Html.DisplayName("Статус заказа")
-        </th>
-        <th>
-            @Html.DisplayName("Телефон клиента")
-        </th>       
-    </tr>
 
-    @foreach (var item in Model)
-    {
+@*<div class="partialView">
+        @Html.Action("GetPartialView", "Driver")
+    </div>*@
+<br />
+<hr />
+@if (Model.OrdersList.Count() != 0)
+{
+    <p>
+        <h2>@Model.MessageForView</h2>
+    </p>
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Number)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartAdress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FinishAdress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FinishTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Car)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CarCategory)
-            </td>
-            <td>                
-                @Html.DisplayTextFor(modelItem => item.IsDone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClientPhone)
-            </td>
+            <th class="number">
+                @Html.DisplayName("Номер")
+            </th>
+            <th class="date">
+                @Html.DisplayName("Дата")
+            </th>
+            <th class="adr">
+                @Html.DisplayName("Адрес отправки")
+            </th>
+            <th class="adr">
+                @Html.DisplayName("Адрес доставки")
+            </th>
+            <th class="startTime">
+                @Html.DisplayName("Начальное время")
+            </th>
+            <th class="startTime">
+                @Html.DisplayName("Конечное время")
+            </th>
+            <th class="car">
+                @Html.DisplayName("Машина")
+            </th>
+            <th class="category">
+                @Html.DisplayName("Категория")
+            </th>
+            <th class="isDone">
+                @Html.DisplayName("Статус заказа")
+            </th>
+            <th class="phone">
+                @Html.DisplayName("Телефон клиента")
+            </th>
         </tr>
-    }
-</table>
+
+        @foreach (var item in Model.OrdersList)
+        {
+            <tr>
+                <td class="number">
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td class="date">
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td class="adr">
+                    @Html.DisplayFor(modelItem => item.StartAdress)
+                </td>
+                <td class="adr">
+                    @Html.DisplayFor(modelItem => item.FinishAdress)
+                </td>
+                <td class="startTime">
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td class="startTime">
+                    @Html.DisplayFor(modelItem => item.FinishTime)
+                </td>
+                <td class="car">
+                    @Html.DisplayFor(modelItem => item.Car)
+                </td>
+                <td class="category">
+                    @Html.DisplayFor(modelItem => item.CarCategory)
+                </td>
+                <td class="isDone">
+                    @Html.DisplayTextFor(modelItem => item.IsDone)
+                </td>
+                <td class="phone">
+                    @Html.DisplayFor(modelItem => item.ClientPhone)
+                </td>
+            </tr>
+        }
+    </table>
+
+}
+else
+{
+    <h2>@Model.MessageForView не найдены</h2>
+}
 <hr />
 <div>
     @Html.ActionLink("Другие действия", "Index")
 </div>
+
+

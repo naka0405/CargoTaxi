@@ -20,6 +20,7 @@ namespace Business.Interfaces
         void DeactivateDriver(string id);
         List<UserModel> GetAllDrivers();
         UserModel GetDriverById(string id);
-        UserModel GetDriverByEmail(string email);
+        UserModel GetDriverByEmail(string email);       
+
     }
 }

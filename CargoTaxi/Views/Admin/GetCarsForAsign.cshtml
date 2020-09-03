@@ -1,0 +1,53 @@
+﻿@model CargoTaxi.Models.CarsForOrderViewModel
+@{
+    ViewBag.Title = "AsignCar";
+}
+
+<h2>Назначить машину для заказа №:@Model.OrderNumber на @Model.OrderDate.ToShortDateString() на @Model.StartTime</h2>
+<hr/>
+<table class="table table-striped">
+    <tr>
+        @*<th>Ин</th>*@
+        <th>Номер</th>
+        <th>Категория</th>
+        <th>Водитель</th>
+        <th>Заказы</th>
+        <th>Действия</th>
+    </tr>
+    @foreach (var car in Model.Cars)
+    {
+        <tr>
+            @*<td>@car.Id</td>*@
+            <td><a href="/Car/CarDetails/@car.Id">@car.RegistrNumber</a></td>
+            <td><a href="/CarCategory/CarCategoryDetails/@car.Category.Id">@car.Category.Name</a></td>
+            <td><a href="/Driver/DriverDetails/@car.DriverId">@car.Driver.FirstName  @car.Driver.LastName</a></td>
+            <td>
+                <ul>
+                    @foreach (var order in car.Orders)
+                    {
+                        <li><a href="/Order/OrderDetails/@order.Id">@order.Number | @order.Date.ToShortDateString() | @order.StartTime| </a></li>
+                    }
+                </ul>
+            </td>
+            <td>
+                @*<a class="btn btn-primary btn-sm" href="/Order/EditCar/new {@car.Id,@ViewBag.OrderId}">Назначить</a>*@
+                @Html.ActionLink("Назначить", "EditOrder", "Admin", new { orderId = Model.OrderId, carId=car.Id },  new { htmlAttributes = new { @class ="btn btn-primary btn-sm" } })
+               
+            </td>
+        </tr>
+}
+</table>
+@*<br>
+    <a class="btn btn-primary" href="/Car/CreateCar" role="button">Добавить машину</a>*@
+<hr />
+<div>
+    @Html.ActionLink("Другие действия", "Index", "Admin")<br/>
+    
+    @Html.ActionLink("Назад к списку", "AllNotAsignOrders", "Admin")
+    
+</div>
+
+
+
+
+

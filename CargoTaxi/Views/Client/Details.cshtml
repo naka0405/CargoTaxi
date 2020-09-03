@@ -1,0 +1,38 @@
+﻿@model CargoTaxi.Models.ClientViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+<div>
+    <h4><b>Мои данные</b></h4>
+    <hr style="width:400px"/>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Имя")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt >
+            @Html.DisplayName("Фамилия")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt >
+            @Html.DisplayName("Номер телефона")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button type="button" id="editProfile" class="btn btn-success btn-lg" onclick="location.href='@Url.Action("EditClientProfile", "Client")'">Редактировать профиль</button>
+</p>

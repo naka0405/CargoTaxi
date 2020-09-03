@@ -78,11 +78,19 @@
             @Html.DisplayFor(model => model.FinishAdress)
         </dd>
 
+        <dt>
+            @Html.DisplayName("Категория машины")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
     </dl>
 </div>
 <hr/>
 <p>
     @Html.ActionLink("Создать еще заказ", "CreateOrder")
     <br/>
-    @Html.ActionLink("Мои заказы", "GetAllClientOrders")
+    @Html.ActionLink("Мои заказы", "AllClientOrders")
 </p>

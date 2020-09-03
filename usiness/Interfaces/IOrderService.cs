@@ -9,13 +9,18 @@ namespace Business.Interfaces
 {
     public interface IOrderService
     {
-        void CreateOrder(OrderModel order);
+        string CreateOrder(OrderModel order, string id);        
         List<OrderModel> GetAllOrders();
         List<OrderModel> GetNotDoneOrders();
         void EditOrder(OrderModel order);
         void DeleteOrder(int id);
         OrderModel GetOrderById(int id);
-        OrderModel GetOrderByCarRegistrNumber(string number);
-        OrderModel GetOrderByDriverTel(string tel);
+        List<OrderModel> GetOrderByCarRegistrNumber(string number);
+        List<OrderModel> GetOrderByClientTel(string tel);
+        List<OrderModel> GetTodayOrders();
+        List<OrderModel> GetNotAsignOrders();
+        List<OrderModel> OrdersByDate(DateTime? startDate, DateTime? finishDate);
+        void AsignCar(int orderId, int carId);
+
     }
 }

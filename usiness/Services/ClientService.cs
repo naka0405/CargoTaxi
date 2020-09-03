@@ -16,33 +16,21 @@ namespace Business.Services
 {
     public class ClientService : IClientService
     {
-        private readonly IClientRepozitoriy _clientRepozitoriy;
-        private readonly IClientHelper _helperRepozitoriy;
+        private readonly IClientRepository _clientRepozitoriy;        
         public readonly IMapper _mapper;
-        private StringBuilder _stringBuilder;
-        public ClientService(IClientRepozitoriy clientRepozitoriy, IMapper mapper, IClientHelper helper)
+       
+        public ClientService(IClientRepository clientRepozitoriy, IMapper mapper )
         {
-            _helperRepozitoriy = helper;
             _clientRepozitoriy = clientRepozitoriy;
-            _mapper = mapper;
-            _stringBuilder = new StringBuilder();
+            _mapper = mapper;            
         }
-        public string CreateOrder(OrderModel orderBL, string id)
+        public UserModel GetClientById(string id)
         {
-            var order = _mapper.Map<Order>(orderBL);
-            var orderNumber = CreateOrderNumber();
-            order.Number = orderNumber;
-            _clientRepozitoriy.CreateOrder(order, id);
-            return orderNumber;
+            var clientInBd = _clientRepozitoriy.GetClientById(id);
+            var clientBL = _mapper.Map<UserModel>(clientInBd);
+            return clientBL;
         }
-        private string CreateOrderNumber()
-        {
-            var randomNumb = new Random().Next(1,300);
-            _stringBuilder.Append(DateTime.Today.ToShortDateString());
-            _stringBuilder.AppendFormat($"/{randomNumb}");
-            var strNumber = _stringBuilder.ToString();
-            return strNumber;
-        }
+        
         public List<OrderModel> GetAllClientOrders(string clientId)
         {
             var allOrders = _clientRepozitoriy.GetMyAllOrders(clientId);

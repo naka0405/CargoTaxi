@@ -1,16 +1,12 @@
 ﻿using CargoTaxi.CustomValidation;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+using System.Web.Mvc;
 
 namespace CargoTaxi.Models
 {
     public class CreateOrderPostModel
-    {
-        public string Number { get; set; }
-
+    {        
         [DataType(DataType.Date)]        
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}"
             , ApplyFormatInEditMode = true)]        
@@ -28,10 +24,9 @@ namespace CargoTaxi.Models
         [Required(ErrorMessage = "Поле должно быть установлено")]
         public string FinishAdress { get; set; }
 
-
         public int? CarCategoryId { get; set; }      
         public string ClientId { get; set; }
-     
+        public SelectList Categories { get; set; }
     }
 }
 

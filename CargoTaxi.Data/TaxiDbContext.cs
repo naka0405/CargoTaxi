@@ -52,6 +52,5 @@ namespace CargoTaxi.Data
         {
             return new TaxiDbContext();
         }
-
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CargoTaxi.Data.Repozitories
 {
-    public class AdminRepozitory : IAdminRepozitoriy
+    public class AdminRepository : IAdminRepository
     {
         public void AssignCar(int orderId, int carId, string number)
         {
@@ -34,21 +34,24 @@ namespace CargoTaxi.Data.Repozitories
             }
         }
 
-        public void CreateDriver(int id)
-        {
-            using (var ctx = new TaxiDbContext())
-            {
-                var user = ctx.Users.Where(x => x.Id == id.ToString()).FirstOrDefault();
-                var role = ctx.Roles.SingleOrDefault(m => m.Name == "Driver");
-                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(ctx));
-                if (user != null)
-                {
-                    userManager.AddToRole(user.Id, "Driver");
-                    user.Roles.Add(new IdentityUserRole { RoleId = role.Id });
-                    ctx.SaveChanges();
-                }
-            }
-        }
+        //public void CreateDriver(int id)
+        //{
+        //    using (var ctx = new TaxiDbContext())
+        //    {
+        //        var user = ctx.Users.Where(x => x.Id == id.ToString()).FirstOrDefault();
+        //        var roleDriver = ctx.Roles.SingleOrDefault(m => m.Name == "Driver");
+        //        var roleClient = ctx.Roles.SingleOrDefault(m => m.Name == "Client");
+        //        var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(ctx));
+        //        if (user != null)
+        //        {
+        //            userManager.AddToRole(user.Id, "Driver");
+        //            userManager.RemoveFromRole(user.Id, "Client");
+        //            user.Roles.Add(new IdentityUserRole { RoleId = roleDriver.Id });
+        //            user.Roles.Remove(new IdentityUserRole { RoleId = roleClient.Id });
+        //            ctx.SaveChanges();
+        //        }
+        //    }
+        //}
 
         public void DeactivateDriver(int id)
         {

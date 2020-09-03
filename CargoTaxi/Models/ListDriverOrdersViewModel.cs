@@ -8,5 +8,6 @@ namespace CargoTaxi.Models
     public class ListDriverOrdersViewModel
     {
         public List<DriverOrderViewModel> OrdersList { get; set; }
+        public string MessageForView { get; set; }
     }
 }

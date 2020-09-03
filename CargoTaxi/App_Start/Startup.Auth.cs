@@ -65,6 +65,7 @@ namespace CargoTaxi
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+            //app.UseAuthentication();
         }
     }
 }

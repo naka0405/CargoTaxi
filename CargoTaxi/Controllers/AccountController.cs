@@ -30,7 +30,7 @@ namespace CargoTaxi.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -42,9 +42,9 @@ namespace CargoTaxi.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -84,7 +84,7 @@ namespace CargoTaxi.Controllers
             // Сбои при входе не приводят к блокированию учетной записи
             // Чтобы ошибки при вводе пароля инициировали блокирование учетной записи, замените на shouldLockout: true
             ApplicationUser signedUser = UserManager.FindByEmail(model.Email);
-            if(signedUser!=null)
+            if (signedUser != null)
             {
                 result = await SignInManager.PasswordSignInAsync(signedUser.UserName, model.Password, model.RememberMe, shouldLockout: false);
             }
@@ -134,7 +134,7 @@ namespace CargoTaxi.Controllers
             // Если пользователь введет неправильные коды за указанное время, его учетная запись 
             // будет заблокирована на заданный период. 
             // Параметры блокирования учетных записей можно настроить в IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -161,29 +161,45 @@ namespace CargoTaxi.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, string Id = null)
         {
+
             if (ModelState.IsValid)
-            {  
+            {
                 var user = new ApplicationUser
                 {
                     UserName = model.Email,
                     Email = model.Email,
-                    FirstName=model.FirstName,
-                    LastName=model.LastName,
-                    PhoneNumber=model.PhoneNumber
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    PhoneNumber = model.PhoneNumber
                 };
                 var ctx = new TaxiDbContext();
                 var roleStore = new RoleStore<IdentityRole>(ctx);
                 var roleMngr = new RoleManager<IdentityRole>(roleStore);
+                if (Id != null && UserManager.GetRoles(Id).Contains("Admin"))
+                {
+                    if (UserManager.GetRoles(Id).Contains("Admin"))
+                    {
+                        var roleDriver = roleMngr.FindByName("Driver");
+                        var resultDriver = await UserManager.CreateAsync(user, model.Password);
+                        if (resultDriver.Succeeded)
+                        {
+                            UserManager.AddToRole(user.Id, roleDriver.Name);
+                            ApplicationUser admin = UserManager.FindById(Id);
+                            await SignInManager.SignInAsync(admin, isPersistent: false, rememberBrowser: false);
+                            return RedirectToAction("GetAllDrivers", "Admin");
+                        }
+                    }
+                }
 
                 var role = roleMngr.FindByName("Client");
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     UserManager.AddToRole(user.Id, role.Name);
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // Дополнительные сведения о включении подтверждения учетной записи и сброса пароля см. на странице https://go.microsoft.com/fwlink/?LinkID=320771.
                     // Отправка сообщения электронной почты с этой ссылкой
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -192,6 +208,7 @@ namespace CargoTaxi.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
+
                 AddErrors(result);
             }
 

@@ -26,22 +26,22 @@ namespace CargoTaxi.Autofac
             //builder.RegisterApiControllers(typeof(Controllers.API.AnimalController).Assembly);
 
 
-            builder.RegisterType<OrderRepozitory>().As<IOrderRepozitoriy>();
-            builder.RegisterType<DriverRepozitory>().As<IDriverRepozitoriy>();
-            builder.RegisterType<ClientRepozitoriy>().As<IClientRepozitoriy>();
-            builder.RegisterType<AdminRepozitory>().As<IAdminRepozitoriy>();
-            builder.RegisterType<ClientHelperRepozitory>().As<IClientHelper>();
-            builder.RegisterType<DriverHelperRepozitory>().As<IDriverHelper>();
-            builder.RegisterType<CarRepozitory>().As<ICarRepozitory>();
-            builder.RegisterType<OrderRepozitory>().As<IOrderRepozitoriy>();
-            builder.RegisterType<CarCategoryRepository>().As<ICarCategoryRepozitory>();
+            builder.RegisterType<OrderRepository>().As<IOrderRepository>();
+            builder.RegisterType<DriverRepository>().As<IDriverRepository>();
+            builder.RegisterType<ClientRepository>().As<IClientRepository>();
+            builder.RegisterType<AdminRepository>().As<IAdminRepository>();
+            //builder.RegisterType<ClientHelperRepozitory>().As<IClientHelper>();
+            //builder.RegisterType<DriverHelperRepozitory>().As<IDriverHelper>();
+            builder.RegisterType<CarRepository>().As<ICarRepository>();
+            builder.RegisterType<OrderRepository>().As<IOrderRepository>();
+            builder.RegisterType<CarCategoryRepository>().As<ICarCategoryRepository>();
 
             builder.RegisterType<CarCategoryService>().As<ICarCategoryService>();
             builder.RegisterType<OrderService>().As<IOrderService>();
             builder.RegisterType<ClientService>().As<IClientService>();
             builder.RegisterType<DriverService>().As<IDriverService>();
-            builder.RegisterType<AdminService>().As<IAdminService>();
-            builder.RegisterType<ClientHelperService>().As<IClientHelperService>();
+           // builder.RegisterType<AdminService>().As<IAdminService>();
+           // builder.RegisterType<ClientHelperService>().As<IClientHelperService>();
             builder.RegisterType<CarService>().As<ICarService>();
 
             builder.RegisterType<TaxiDbContext>().InstancePerRequest();

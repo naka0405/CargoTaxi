@@ -13,19 +13,19 @@ using System.Linq;
 
 namespace CargoTaxi.Data.Repozitories
 {
-    public class DriverRepozitory : IDriverRepozitoriy
+    public class DriverRepository : IDriverRepository
     {
         public ApplicationUser GetDriverById(string id)
         {
             using (var ctx = new TaxiDbContext())
             {
+                ctx.Configuration.ProxyCreationEnabled = false;
                 // var roleStore = new RoleStore<IdentityRole>(ctx);
                 // var roleMngr = new RoleManager<IdentityRole>(roleStore);
 
                 //var role = roleMngr.FindByName("Driver");
                 //var roleId = role.Id;
-                var driver = ctx.Users.Where(x => x.Id == id)
-                    .FirstOrDefault();
+                var driver = ctx.Users.Include(x=>x.Cars).Include(x=>x.Orders).Where(x => x.Id == id).FirstOrDefault();                
                 return driver;
             }
         }
@@ -34,7 +34,7 @@ namespace CargoTaxi.Data.Repozitories
         {
             using (var ctx = new TaxiDbContext())
             {
-                var driver = ctx.Users.Where(x => x.UserName == email)
+                var driver = ctx.Users.Include(x => x.Cars).Include(x => x.Orders).Where(x => x.UserName == email)
                     .FirstOrDefault();
                 return driver;
             }
@@ -50,8 +50,6 @@ namespace CargoTaxi.Data.Repozitories
                 ctx.SaveChanges();
             }
         }
-
-
 
         public List<Order> GetMyDoneOrders(string id)
         {
@@ -100,7 +98,8 @@ namespace CargoTaxi.Data.Repozitories
         {
             using (var ctx = new TaxiDbContext())
             {
-                var myOrders = ctx.Orders.Include(x => x.Car.Driver).Include(c => c.Category).Include(x => x.Client).Where(x => x.Car.DriverId == id).OrderByDescending(x => x.Date).Take(5).ToList();
+                var myOrders = ctx.Orders.Include(x => x.Car.Driver).Include(c => c.Category).Include(x => x.Client)
+                    .Where(x => x.Car.DriverId == id).OrderByDescending(x => x.Date).Take(5).ToList();
                 return myOrders;
             }
         }
@@ -139,11 +138,6 @@ namespace CargoTaxi.Data.Repozitories
 
             }
         }
-
-
-
-
-
         public void UpdateDriver(ApplicationUser driver)
         {
             using (var ctx = new TaxiDbContext())
@@ -158,8 +152,6 @@ namespace CargoTaxi.Data.Repozitories
                 ctx.SaveChanges();
             }
         }
-
-
         public void DeactivateDriver(string id)
         {
             using (var ctx = new TaxiDbContext())

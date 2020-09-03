@@ -19,11 +19,13 @@ namespace CargoTaxi.Data.Models
 
         public IList<Order> Orders { get; set; }
         public bool IsLoad { get; set ; }
+        //public List<>
 
         public Car()
         {
             IsLoad = false;
             Orders = new List<Order>();
         }
+
     }
 }

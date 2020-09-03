@@ -237,16 +237,13 @@
   <ItemGroup>
     <Compile Include="Initialiser.cs" />
     <Compile Include="Interfaces\IActiveDriver.cs" />
-    <Compile Include="Interfaces\IAdminRepozitoriy.cs" />
-    <Compile Include="Interfaces\ICarRepozitory.cs" />
-    <Compile Include="Interfaces\IClientRepozitoriy.cs" />
-    <Compile Include="Interfaces\IDriverHelper.cs" />
-    <Compile Include="Interfaces\IDriverRepozitoriy.cs" />
-    <Compile Include="Interfaces\IClientHelper.cs" />
-    <Compile Include="Interfaces\IDriverRepozitory.cs" />
+    <Compile Include="Interfaces\IAdminRepository.cs" />
+    <Compile Include="Interfaces\ICarRepository.cs" />
+    <Compile Include="Interfaces\IClientRepository.cs" />
+    <Compile Include="Interfaces\IDriverRepository.cs" />
     <Compile Include="Interfaces\ILoadable.cs" />
-    <Compile Include="Interfaces\ICarCategoryRepozitory.cs" />
-    <Compile Include="Interfaces\IOrderRepozitoriy.cs" />
+    <Compile Include="Interfaces\ICarCategoryRepository.cs" />
+    <Compile Include="Interfaces\IOrderRepository.cs" />
     <Compile Include="Migrations\202008151739388_InitialCreate.cs" />
     <Compile Include="Migrations\202008151739388_InitialCreate.Designer.cs">
       <DependentUpon>202008151739388_InitialCreate.cs</DependentUpon>
@@ -267,6 +264,10 @@
     <Compile Include="Migrations\202008172055130_add_columnFirstName_toUser.Designer.cs">
       <DependentUpon>202008172055130_add_columnFirstName_toUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009012024229_Add_prop_PartOfDay_for_Order.cs" />
+    <Compile Include="Migrations\202009012024229_Add_prop_PartOfDay_for_Order.Designer.cs">
+      <DependentUpon>202009012024229_Add_prop_PartOfDay_for_Order.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\CarCategory.cs" />
@@ -274,17 +275,17 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderPropForUpdate.cs" />
     <Compile Include="Models\RegisterUser.cs" />
-    <Compile Include="Repozitories\AdminRepozitory.cs" />
-    <Compile Include="Repozitories\CarCategoryRepository.cs" />
-    <Compile Include="Repozitories\CarRepozitory.cs" />
-    <Compile Include="Repozitories\ClientRepozitoriy.cs" />
-    <Compile Include="Repozitories\DriverHelperRepozitory.cs" />
-    <Compile Include="Repozitories\DriverRepozitory.cs" />
-    <Compile Include="Repozitories\ClientHelperRepozitory.cs" />
-    <Compile Include="Repozitories\OrderRepozitory.cs" />
+    <Compile Include="Models\TimeList.cs" />
+    <Compile Include="Repositories\AdminRepository.cs" />
+    <Compile Include="Repositories\CarCategoryRepository.cs" />
+    <Compile Include="Repositories\CarRepository.cs" />
+    <Compile Include="Repositories\ClientRepository.cs" />
+    <Compile Include="Repositories\DriverRepository.cs" />
+    <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="TaxiDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\EnumCategories.cs" />
+    <Compile Include="Utils\EnumDayParts.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -305,6 +306,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008172055130_add_columnFirstName_toUser.resx">
       <DependentUpon>202008172055130_add_columnFirstName_toUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009012024229_Add_prop_PartOfDay_for_Order.resx">
+      <DependentUpon>202009012024229_Add_prop_PartOfDay_for_Order.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

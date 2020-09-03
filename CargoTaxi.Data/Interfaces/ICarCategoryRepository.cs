@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace CargoTaxi.Data.Interfaces
 {
-    public interface IDriverHelper
+    public interface ICarCategoryRepository
     {
-        ApplicationUser GetDriverById(string id);
-        void UpdateOrder(Order order);
-
+        CarCategory GetCarCategoryById(int? id);        
+        List<CarCategory> GetAllCategories();        
     }
 }

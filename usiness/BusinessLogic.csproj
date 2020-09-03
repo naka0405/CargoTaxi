@@ -47,10 +47,8 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Interfaces\IAdminService.cs" />
     <Compile Include="Interfaces\ICarService.cs" />
-    <Compile Include="Interfaces\IDriverHelperService.cs" />
     <Compile Include="Interfaces\IDriverService.cs" />
     <Compile Include="Interfaces\IClientService.cs" />
-    <Compile Include="Interfaces\IClientHelperService.cs" />
     <Compile Include="Interfaces\ICarCategoryService.cs" />
     <Compile Include="Interfaces\IOrderService.cs" />
     <Compile Include="Models\CarCategoryModel.cs" />
@@ -63,9 +61,7 @@
     <Compile Include="Services\CarCategoryService.cs" />
     <Compile Include="Services\CarService.cs" />
     <Compile Include="Services\ClientService.cs" />
-    <Compile Include="Services\DriverHelperService.cs" />
     <Compile Include="Services\DriverService.cs" />
-    <Compile Include="Services\ClientHelperService.cs" />
     <Compile Include="Services\OrderService.cs" />
   </ItemGroup>
   <ItemGroup>

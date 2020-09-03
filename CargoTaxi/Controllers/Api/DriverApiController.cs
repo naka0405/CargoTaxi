@@ -2,6 +2,7 @@
 using Business.Interfaces;
 using CargoTaxi.Models;
 using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,10 @@ namespace CargoTaxi.Controllers.Api
     public class DriverApiController : ApiController
     {
         private readonly IDriverService _driverService;
-        private readonly IDriverHelperService _driverHelperService;
+       
         private readonly IMapper _mapper;
-        public DriverApiController(IDriverHelperService driverHelperService, IMapper mapper, IDriverService driverService)
+        public DriverApiController( IMapper mapper, IDriverService driverService)
         {
-            _driverHelperService = driverHelperService;
             _mapper = mapper;
             _driverService = driverService;
         }
@@ -29,6 +29,9 @@ namespace CargoTaxi.Controllers.Api
            var id = User.Identity.GetUserId();
             var driverOrders = _driverService.GetMyOrders(id, startDate=null, finishDate=null);
             var driverOrdersBl = _mapper.Map<List<OrderViewModel>>(driverOrders);
+
+            var json = JsonConvert.SerializeObject(driverOrdersBl);
+
             return driverOrdersBl;
         }
 

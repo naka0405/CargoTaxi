@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CargoTaxi.Data.Repozitories
 {
-    public class CarCategoryRepository : ICarCategoryRepozitory
+    public class CarCategoryRepository : ICarCategoryRepository
     {
         
 
@@ -21,7 +21,7 @@ namespace CargoTaxi.Data.Repozitories
             }
         }
 
-        public CarCategory GetCategoryById(int? id)
+        public CarCategory GetCarCategoryById(int? id)
         {
             using (var ctx = new TaxiDbContext())
             {

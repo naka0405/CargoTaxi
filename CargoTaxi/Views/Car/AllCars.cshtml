@@ -9,6 +9,7 @@
         <th>Ин</th>
         <th>Номер</th>
         <th>Категория</th>
+        <th>Активна</th>
         <th>Водитель</th>
         <th>Заказы</th>
         <th>Действия</th>
@@ -19,7 +20,9 @@
     <td>@car.Id</td>
     <td><a href="/Car/CarDetails/@car.Id">@car.RegistrNumber</a></td>
     <td><a href="/CarCategory/CarCategoryDetails/@car.Category.Id">@car.Category.Name</a></td>
-    <td><a href="/Driver/DriverDetails/@car.DriverId">@car.Driver.FirstName  @car.Driver.LastName</a></td>
+    <td>@Html.DisplayFor(m=>car.IsLoad)</td>
+    <td><a href="/Admin/DriverDetails/@car.DriverId">@car.Driver.LastName  @car.Driver.FirstName</a></td>
+
     <td>
         <ul>
             @foreach (var order in car.Orders)

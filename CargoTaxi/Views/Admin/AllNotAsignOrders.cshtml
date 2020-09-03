@@ -1,0 +1,100 @@
+﻿@model IList<CargoTaxi.Models.OrderViewModel>
+@{
+    ViewBag.Title = "AsignCar";
+}
+
+<h2>Необработанные заказы</h2>
+
+
+<link href="~/Content/Client/ClientCss.css" rel="stylesheet" type="text/css" />
+
+@using (Html.BeginForm())
+{
+    <table class="table">
+    <tr>
+
+        <th class="number">
+            @Html.DisplayName("Номер заказа")
+        </th>
+        <th class="date">
+            @Html.DisplayName("Дата")
+        </th>
+        <th class="startTime">
+            @Html.DisplayName("Время(начало)")
+        </th>
+        @*<th class="startTime">
+                @Html.DisplayName("Время(конец)")
+            </th>*@
+        <th class="adr">
+            @Html.DisplayName("Адрес отправки")
+        </th>
+        <th class="adr">
+            @Html.DisplayName("Адрес доставки")
+        </th>
+
+        @*<th class="car">
+                @Html.DisplayName("Номер машины")
+            </th>*@
+
+        <th class="category">
+            @Html.DisplayName("Категория машины")
+        </th>
+        <th class="client">
+            @Html.DisplayName("Клиент")
+        </th>
+        <th class="phone">
+            @Html.DisplayName("Телефон клиента")
+        </th>
+        <th>Действие</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td class="number">
+                @Html.DisplayFor(modelItem => item.Number, new { htmlAttributes = new { @class = "number" } })
+            </td>
+            <td class="date">
+                @Html.DisplayFor(modelItem => item.Date, new { htmlAttributes = new { @class = "date" } })
+            </td>
+            <td class="startTime">
+                @Html.DisplayFor(modelItem => item.StartTime, new { htmlAttributes = new { @class = "startTime" } })
+            </td>
+            @*<td class="startTime">
+                    @Html.DisplayFor(modelItem => item.FinishTime, new { htmlAttributes = new { @class = "startTime" } })
+                </td>*@
+            <td class="adr">
+                @Html.DisplayFor(modelItem => item.StartAdress, new { htmlAttributes = new { @class = "adr" } })
+            </td>
+            <td class="adr">
+                @Html.DisplayFor(modelItem => item.FinishAdress, new { htmlAttributes = new { @class = "adr" } })
+            </td>
+            @*<td class="car">
+                    @if (item.Car != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.Car.RegistrNumber, new { htmlAttributes = new { @class = "car" } })
+                    }
+                </td>*@
+            <td class="category">
+                @Html.DisplayFor(modelItem => item.Category.Name, new { htmlAttributes = new { @class = "category" } })
+            </td>
+            <td class="client">
+                @item.Client.FirstName @item.Client.LastName
+            </td>
+            <td class="phone">
+                @Html.DisplayFor(modelItem => item.Client.PhoneNumber, new { htmlAttributes = new { @class = "phone" } })
+            </td>
+            <td>
+                <a class="btn btn-primary btn-sm" href="/Admin/GetCarsForAsign/@item.Id">Назначить машину</a>
+            </td>
+        </tr>
+    }
+    </table>
+}
+<div>
+    @Html.ActionLink("Другие действия", "Index", "Admin")
+</div>
+
+
+

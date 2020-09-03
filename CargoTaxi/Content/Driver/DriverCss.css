@@ -1,16 +1,22 @@
 ﻿body {
-    background-color: antiquewhite;
+    background-color: floralwhite;
     font-size: 16px;
 }
-h3 {
+
+input {
+    margin: 0;
+    padding: 0;
+    width:100%;
+}
+    h3 {
     text-align: center;
 }
 
 #item_Number{
-width:100px;
+width:80px;
 }
 #item_Date {
-    width: 100px;
+    width: 80px;
 }
 #item_StartTime {
     width: 55px;
@@ -34,14 +40,40 @@ width:100px;
     width: 30px;
 }
 #item_ClientPhone {
-    width: 110px;
+    width: 120px;
+}
+.car{
+    width:93px;
 }
 
+.category{
+    width:90px;
+}
+.phone{
+    width:110px;
+}
+
+.number{
+    width: 85px;
+}
+.date {
+    width: 80px;
+}
+.startTime {
+    width: 55px;
+}
+.adr{
+    width:300px;
+}
+.isDone{
+    width:30px;
+}
 
 table {
     border-spacing: 0 10px;
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
+    width:85%;
 }
 
 th {
@@ -80,28 +112,12 @@ td {
     }
 .body-content {
     margin-top: 100px;
-}
-.driver_button {
-    font-weight: 700;
-    color: white;
-    text-decoration: none;
-    padding: .8em 1em calc(.8em + 3px);
-    border-radius: 3px;
-    background: rgb(64,199,129);
-    box-shadow: 0 -3px rgb(53,167,110) inset;
-    transition: 0.2s;
+    width: 100%;
+    margin: 30px;
 }
 
-    .driver_button:hover {
-        background: rgb(53, 167, 110);
-    }
 
-    .driver_button:active {
-        background: rgb(33,147,90);
-        box-shadow: 0 3px rgb(33,147,90) inset;
-    }
-
-#btn_api_submit1, div input.btn.btn-default {
+/*#btn_api_submit1, div input.btn.btn-default {
     background: #d1ac7c;
     display: inline-block;
     color: white;
@@ -120,10 +136,8 @@ td {
 
     #btn_api_submit1:active, div input.btn.btn-default:active {
         background: #d1ac7c;
-    }
-   /* {
-    background-color: #ce8931;
-    color: ##333;
-    border: 1.5px solid;
-    font-size: 1.3em;
-}*/
+    }*/
+.rulesList {
+    width:700px;
+    float:right;
+}

@@ -1,6 +1,4 @@
-﻿@section scripts{
-    <script src="@Url.Content("~/Scripts/SPA/Index.js")"></script>
-}
+﻿
 <link href="~/Content/Client/ClientCss.css" rel="stylesheet" type="text/css" />
 
 
@@ -8,21 +6,52 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Функционал клиента</h2>
+<h2>Возможности клиента</h2>
+<hr style="width:400px" />
+@*<div class="buttons" style="float:left; margin-top:50px; width:400px">*@
+<div class="box">
+    <div class="block">
+        <button type="button" id="create_order" class="btn btn-success btn-lg" onclick="location.href='@Url.Action("CreateOrder", "Client")'">Создать заказ</button>
+        <button type="button" id="all_myOrders" class="btn btn-success btn-lg" onclick="location.href='@Url.Action("AllClientOrders", "Client")'">Все мои заказы</button>
+        <br />
+        <p style="margin-top:45px">
+            <b>НАШИ ГАРАНТИИ</b><br /><br />
 
-<button type="button" id="editProfile" class="client_button" onclick="location.href='@Url.Action("EditClientProfile", "Client")'">Редактировать профиль</button>
-<button type="button" id="create_order" class="client_button" onclick="location.href='@Url.Action("CreateOrder", "Client")'">Создать заказ</button>
-<button type="button" id="all_myOrders" class="client_button" onclick="location.href='@Url.Action("AllClientOrders", "Client")'">Все мои заказы</button>
+            <b>БЫСТРО</b><br />
+            Гарантированная подача машины от 20 минут после оформления заказа<br />
 
-<div>
+            <b>УДОБНО</b><br />
+            Гарантируем, что перевезем любой груз — от хрупкого сервиза до  крупногабаритной мебели<br />
 
+            <b>НАДЕЖНО</b><br />
+            Мы гарантируем, что весь ваш груз будет доставлен по адресу в целости и без задержек<br />
+        </p>
+
+    </div>
+    @*<hr style="width:400px" />*@
+    @*<div class="rulesList" style="float:left; margin-top:100px; width:400px">*@
+
+    <div class="block">
+        При заказе услуги такси необходимо определить:
+        <ul>
+            <li>время и место (адрес) подачи транспортного средства; </li>
+            <li>конечный пункт маршрута;</li>
+            <li>контактный телефон заказчика услуги;</li>
+            <li>другие основные характеристики обслуживания (по согласованию сторон).</li>
+            <li>
+                Предприятие, предоставляет информационно-диспетчерские услуги, уточняет время,
+                необходимое для осуществления перевозки, и время подачи транспортного средства
+                с учетом особенностей дорожно-транспортной ситуации (погодных условий,
+                времени суток, возможных осложнений во время выполнения)
+            </li>
+        </ul>
+        <button type="button" class="btn btn-success btn-lg" onclick="location.href='@Url.Action("Rules", "Client")'">ПРАВА И ОБЯЗАННОСТИ КЛИЕНТА >></button>
+
+    </div>
+    @*<div class="partialView" style="float:left">*@    
+    <div class="block">
+        @Html.Action("Details", "Client")
+    </div>
 </div>
 
-<div class="list-container">
 
-
-</div>
-<div class="list-container1">
-
-
-</div>

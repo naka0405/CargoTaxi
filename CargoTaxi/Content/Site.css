@@ -7,6 +7,7 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    min-height: calc(100vh - 70px);
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -22,3 +23,12 @@ select,
 textarea {
     max-width: 280px;
 }
+.content {
+    min-height: calc(100vh - 70px);
+}
+
+footer {
+    height: 50px;
+    margin-left: 100px;
+    width: 900px;
+    }

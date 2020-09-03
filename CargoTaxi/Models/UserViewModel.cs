@@ -18,7 +18,7 @@ namespace CargoTaxi.Models
         public IList<OrderViewModel> Orders { get; set; }
         public IList<CarViewModel> Cars { get; set; }
         public bool IsActiveDriver { get; set; }
-
+        public string ViewMessage { get; set; }
         public UserViewModel()
         {
             Orders = new List<OrderViewModel>();

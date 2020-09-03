@@ -23,7 +23,7 @@ namespace CargoTaxi.Models
         public string Client { get; set; }
         public string ClientPhone { get; set; }
 
-        public ClientOrderViewModel(string notNumber)
+        public ClientOrderViewModel(string notNumber= "не назначена")
         {
             Car = notNumber;
         }

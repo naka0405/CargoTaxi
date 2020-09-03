@@ -13,11 +13,11 @@ namespace Business.Services
 {
     public class DriverService : IDriverService
     {
-        private readonly IDriverRepozitoriy _driverRepozitoriy;
-        //private readonly IDriverHelper _driverHelperRepozitoriy;
+        private readonly IDriverRepository _driverRepozitoriy;
         public readonly IMapper _mapper;
-       // private StringBuilder _stringBuilder;
-        public DriverService(IDriverRepozitoriy driverRepozitoriy, IMapper mapper)
+        //private readonly IDriverHelper _driverHelperRepozitoriy;
+        // private StringBuilder _stringBuilder;
+        public DriverService(IDriverRepository driverRepozitoriy, IMapper mapper)
         {
             //_driverHelperRepozitoriy = helper;
             _driverRepozitoriy = driverRepozitoriy;

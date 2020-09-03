@@ -1,29 +1,39 @@
-﻿
-@section scripts{
-    <script src="@Url.Content("~/Scripts/SPA/Index.js")"></script>
-}
+﻿@model CargoTaxi.Models.ListDriverOrdersViewModel
 <link href="~/Content/Driver/DriverCss.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Функционал водителя</h2>
-
-<button type="button" id="edit_order" class="driver_button" onclick="location.href='@Url.Action("CheckOrder", "Driver")'">Изменить заказ</button>
-<button type="button" id="all_todayOrders" class="driver_button" onclick="location.href='@Url.Action("GetTodayOrders", "Driver")'">Заказы на сегодня</button>
-<button type="button" id="weekOrders" class="driver_button" onclick="location.href='@Url.Action("GetOrdersForNextWeek", "Driver")'">Заказы на следующую неделю</button>
-<button type="button" id="all_myOrders" class="driver_button" onclick="location.href='@Url.Action("GetMyOrders", "Driver")'">Все мои заказы</button>
-<button type="button" id="all_doneOrders" class="driver_button" onclick="location.href='@Url.Action("GetMyDoneOrders", "Driver")'">Выполненные заказы</button>
+<h2>Сервис водителя</h2>
+<hr />
 
 
-<div>
+<button type="button" id="edit_order" class="btn btn-success btn-lg" onclick="location.href='@Url.Action("CheckOrder", "Driver")'">Изменить заказ</button>
+<button type="button" id="all_todayOrders" class="btn btn-success btn-lg" onclick="location.href='@Url.Action("GetTodayOrders", "Driver")'">Заказы на сегодня</button>
+<button type="button" id="weekOrders" class="btn btn-success btn-lg" onclick="location.href='@Url.Action("GetOrdersForNextWeek", "Driver")'">Заказы на следующую неделю</button>
+<button type="button" id="all_myOrders" class="btn btn-success btn-lg" onclick="location.href='@Url.Action("GetMyOrders", "Driver")'">Все мои заказы</button>
+<button type="button" id="all_doneOrders" class="btn btn-success btn-lg" onclick="location.href='@Url.Action("GetMyDoneOrders", "Driver")'">Выполненные заказы</button>
 
+<hr />
+<div class="rulesList">
+    <pre>
+    Время подачи машины водитель должен зафиксировать самостоятельно.
+    В случае форс-мажора, опаздания или других причин нарушения времени подачи машины,
+    водитель должен оповестить клиента.
+    Контактные данные клиента можно посмотреть в детелизации заказа.
+    ***
+    Время окончания оказания услуг отмечается водителем самостоятельно.
+    ***
+    А также статус заказа должен быть изменен на ВЫПОЛНЕН. Функция <a href="Driver/CheckOrder">ИЗМЕНИТЬ ЗАКАЗ</a>.
+    ***
+    ПРАВА И ОБЯЗАННОСТИ ВОДИТЕЛЯ ТАКСИ В УКРАИНЕ<a href="Driver/Rules">=>смотреть</a>
+</pre>
 </div>
+<button type="button" id="rules" class="btn btn-success btn-lg" onclick="location.href='@Url.Action("Rules", "Driver")'">Памятка водителя</button>
 
-<div class="list-container">
-
-
+<div class="partialView">
+    @Html.Action("GetTodayOrders", "Driver")
 </div>
 <div class="list-container1">
 

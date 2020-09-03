@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CargoTaxi.Data.Interfaces
 {
-    public interface IDriverRepozitoriy
+    public interface IDriverRepository
     {
         //        план на неделю
         //просмотреть свои заказы

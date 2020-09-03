@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CargoTaxi.Data.Interfaces
 {
-    public interface IOrderRepozitoriy
+    public interface IOrderRepository
     {
         //        Все заказы
         //Добавить заказ
@@ -17,12 +17,19 @@ namespace CargoTaxi.Data.Interfaces
         //получить заказ по номеру тел
         //получить заказ по номеру машины
         //void CreateOrder(Order order);
+        void CreateOrder(Order order, string id);
         List<Order> GetAllOrders();
         List<Order> GetNotDoneOrders();
         void EditOrder(Order order);
+        void UpdateOrderByDriver(Order order);
+        List<Order> OrdersByDate(DateTime? startDate, DateTime? finishDate);
         void DeleteOrder(int id);
         Order GetOrderById(int id);
-        Order GetOrderByCarRegistrNumber(string number);
-        Order GetOrderByDriverTel(string tel);
+        List<Order> GetOrderByCarRegistrNumber(string number);
+        List<Order> GetOrderByClientTel(string tel);
+        List<Order> GetTodayOrders();
+        List<Order> GetNotAssignOrders();
+        void AsignCar(int orderId, int carId);
+
     }
 }

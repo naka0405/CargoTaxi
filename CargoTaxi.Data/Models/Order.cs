@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CargoTaxi.Data.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace CargoTaxi.Data.Models
         public string Number { get; set; }
         public DateTime Date { get; set; }
         public string StartTime { get; set; }
+        public EnumDayParts PartOfDay { get; set; }
         public string FinishTime { get; set; }
         public string StartAdress { get; set; }
         public string FinishAdress { get; set; }

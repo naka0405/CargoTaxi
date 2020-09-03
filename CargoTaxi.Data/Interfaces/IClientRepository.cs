@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace CargoTaxi.Data.Interfaces
 {
-    public interface IClientRepozitoriy
-    {       
-        void CreateOrder(Order order, string id);//
+    public interface IClientRepository
+    {
+        ApplicationUser GetClientById(string Id);
         List<Order> GetMyAllOrders(string id);
         void EditClientProfile(ApplicationUser client);
         List<ApplicationUser> GetAllClients();
